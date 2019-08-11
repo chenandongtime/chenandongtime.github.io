@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://chenandongtime.github.io/img/findcounters1.jpg">
 <meta property="og:image" content="https://chenandongtime.github.io/img/findcounters2.jpg">
-<meta property="og:updated_time" content="2019-08-11T13:59:29.334Z">
+<meta property="og:updated_time" content="2019-08-11T14:02:50.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenCV学习笔记十一-findcounters函数">
 <meta name="twitter:description" content="findCounters函数是个重载函数，有两种声明方式： 普通声明： 12findContours( InputOutputArray image, OutputArrayOfArrays contours,              int mode, int method, Point offset=Point());  高级一点的： 123findContours( InputOutput">
@@ -183,6 +183,8 @@
 
 <p>高级一点的声明主要是多了一个 OutputArray hierarchy：</p>
 <p>hierarchy的作用是说明各个轮廓的继承关系。</p>
+<a id="more"></a>
+
 <p>hierarchy也是一个向量，长度和contours相等，每个元素和contours的元素对应。hierarchy的每个元素是一个包含四个整型数的向量。即：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;Vec4i&gt; hierarchy; //Vec4i is a vector contains four number of int</span><br><span class="line"> hierarchy[i][0],hierarchy[i][1],hierarchy[i][2],hierarchy[i][3],</span><br><span class="line"> 分别表示的是第i条轮廓(contours[i])的下一条，前一条，包含的第一条轮廓(第一条子轮廓)和包含他的轮廓(父轮廓)。</span><br></pre></td></tr></table></figure>
 
@@ -193,6 +195,7 @@
 <p><img src="https://chenandongtime.github.io/img/findcounters1.jpg" alt></p>
 <p>使用hierarchy变量的作用：</p>
 <p><img src="https://chenandongtime.github.io/img/findcounters2.jpg" alt></p>
+<p>参考：<a href="http://www.voidcn.com/article/p-pgtgzhaw-du.html" target="_blank" rel="noopener">http://www.voidcn.com/article/p-pgtgzhaw-du.html</a></p>
 
       
 
