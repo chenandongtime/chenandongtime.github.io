@@ -6,23 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>OpenCV学习笔记十：hough变换 | 安东的时光机器</title>
+  <title>Matlab使用技巧 | 安东的时光机器</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于hough变换函数的bug">
-<meta name="keywords" content="OpenCV">
+  <meta name="description" content="Matlab使用技巧绘图函数1、gtext()函数​    命令gtext(‘string’)用鼠标放置标注在现有的图上.运行命令gtext(‘string’)时，屏幕上出现当前图形，在图形上出现一个交叉的十字，该十字随鼠标的移动移动，当按下鼠标左键时，该标注string放在当前十交叉的位置.">
+<meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenCV学习笔记十：hough变换">
-<meta property="og:url" content="http://yoursite.com/2019/08/09/OpenCV学习笔记十：hough变换/index.html">
+<meta property="og:title" content="Matlab使用技巧">
+<meta property="og:url" content="http://yoursite.com/2019/08/13/Matlab使用技巧/index.html">
 <meta property="og:site_name" content="安东的时光机器">
-<meta property="og:description" content="关于hough变换函数的bug">
+<meta property="og:description" content="Matlab使用技巧绘图函数1、gtext()函数​    命令gtext(‘string’)用鼠标放置标注在现有的图上.运行命令gtext(‘string’)时，屏幕上出现当前图形，在图形上出现一个交叉的十字，该十字随鼠标的移动移动，当按下鼠标左键时，该标注string放在当前十交叉的位置.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://chenandongtime.github.io/img/1.png">
-<meta property="og:image" content="https://chenandongtime.github.io/img/2.png">
-<meta property="og:updated_time" content="2019-08-10T08:47:10.738Z">
+<meta property="og:updated_time" content="2019-08-12T16:59:55.288Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenCV学习笔记十：hough变换">
-<meta name="twitter:description" content="关于hough变换函数的bug">
-<meta name="twitter:image" content="https://chenandongtime.github.io/img/1.png">
+<meta name="twitter:title" content="Matlab使用技巧">
+<meta name="twitter:description" content="Matlab使用技巧绘图函数1、gtext()函数​    命令gtext(‘string’)用鼠标放置标注在现有的图上.运行命令gtext(‘string’)时，屏幕上出现当前图形，在图形上出现一个交叉的十字，该十字随鼠标的移动移动，当按下鼠标左键时，该标注string放在当前十交叉的位置.">
   
     <link rel="alternative" href="/atom.xml" title="安东的时光机器" type="application/atom+xml">
   
@@ -154,37 +151,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-OpenCV学习笔记十：hough变换" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Matlab使用技巧" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      OpenCV学习笔记十：hough变换
+      Matlab使用技巧
     </h1>
   
 
         
-        <a href="/2019/08/09/OpenCV学习笔记十：hough变换/" class="archive-article-date">
-  	<time datetime="2019-08-09T09:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
+        <a href="/2019/08/13/Matlab使用技巧/" class="archive-article-date">
+  	<time datetime="2019-08-12T16:44:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="关于hough变换函数的bug"><a href="#关于hough变换函数的bug" class="headerlink" title="关于hough变换函数的bug"></a>关于hough变换函数的bug</h4><a id="more"></a>
+        <h2 id="Matlab使用技巧"><a href="#Matlab使用技巧" class="headerlink" title="Matlab使用技巧"></a>Matlab使用技巧</h2><h3 id="绘图函数"><a href="#绘图函数" class="headerlink" title="绘图函数"></a>绘图函数</h3><h4 id="1、gtext-函数"><a href="#1、gtext-函数" class="headerlink" title="1、gtext()函数"></a>1、gtext()函数</h4><p>​    命令gtext(‘string’)用鼠标放置标注在现有的图上.<br>运行命令gtext(‘string’)时，屏幕上出现当前图形，在<br>图形上出现一个交叉的十字，该十字随鼠标的移动移动，<br>当按下鼠标左键时，该标注string放在当前十交叉的位<br>置.</p>
+<a id="more"></a>
 
-<p>根据官方教程或其他博客教程调用hough函数的时候总是会报错，主要是返回的circles错误，或者lines错误，这可能和输入参数有关。但是明确的输入是image格式并没有错，其他的参数也没有明确要求，暂时放下，以后再看。报错是再画图是报错，实际上错误是产生再调用hough函数时。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;opencv2/opencv.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Mat srcImage = imread(<span class="string">"circle.jpg"</span>);</span><br><span class="line">	<span class="keyword">if</span> (srcImage.data == <span class="number">0</span>) &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"there is no file"</span>; <span class="keyword">return</span> <span class="number">-1</span>; &#125;</span><br><span class="line">	imshow(<span class="string">"srcImage"</span>, srcImage);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//HoughCircle 变换</span></span><br><span class="line">	Mat gray;</span><br><span class="line">	<span class="comment">//转成灰度图</span></span><br><span class="line">	cvtColor(srcImage, gray, COLOR_BGR2GRAY);</span><br><span class="line">	<span class="comment">//滤波</span></span><br><span class="line">	medianBlur(gray, gray, <span class="number">5</span>);</span><br><span class="line">	<span class="comment">//使用houghcircles函数</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;Vec3f&gt; circles;</span><br><span class="line">	HoughCircles(gray, circles, HOUGH_GRADIENT, <span class="number">1</span>, <span class="number">1</span>, <span class="number">100</span>, <span class="number">30</span>, <span class="number">1</span>, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//画出hough函数的结果</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; circles.size(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; circles[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		Vec3i c = circles[i];</span><br><span class="line">		<span class="keyword">if</span> (c[<span class="number">2</span>] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			circle(srcImage, Point(c[<span class="number">0</span>], c[<span class="number">1</span>]), c[<span class="number">2</span>], Scalar(<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>, LINE_AA);</span><br><span class="line">			circle(srcImage, Point(c[<span class="number">0</span>], c[<span class="number">1</span>]), c[<span class="number">2</span>], Scalar(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">3</span>, LINE_AA);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	imshow(<span class="string">"detected circles"</span>, srcImage);</span><br><span class="line">	waitKey(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">30</span>);</span><br><span class="line"> y=<span class="built_in">sin</span>(x);</span><br><span class="line"> z=<span class="built_in">cos</span>(x);</span><br><span class="line"> <span class="built_in">plot</span>(x,y,x,z)</span><br><span class="line"> gtext(<span class="string">'sin(x)'</span>);</span><br><span class="line"> gtext(<span class="string">'cos(x)'</span>);</span><br></pre></td></tr></table></figure>
 
-<p>已经解决了上面的问题，主要是环境配置，版本适应。</p>
-<p>根官方教程做了如下案例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/////OpenCV4.1.1+VS2017</span></span><br><span class="line"><span class="comment">////author :Chenandong</span></span><br><span class="line"><span class="comment">////time:2019.08.10</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/imgcodecs.hpp"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/highgui.hpp"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/imgproc.hpp"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// Loads an image</span></span><br><span class="line">	Mat src = imread(<span class="string">"circle7from6.png"</span>, IMREAD_COLOR);</span><br><span class="line">	<span class="comment">// Check if image is loaded fine</span></span><br><span class="line">	<span class="keyword">if</span> (src.empty()) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">" Error opening image\n"</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">" Program Arguments: [image_name -- default %s] \n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//show the origin image</span></span><br><span class="line">	imshow(<span class="string">"origin image"</span>, src);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//////////////HOughCircles detect</span></span><br><span class="line">	<span class="comment">//----------------------------------------------------------</span></span><br><span class="line">	<span class="comment">// change to gray image</span></span><br><span class="line">	Mat gray;</span><br><span class="line">	cvtColor(src, gray, COLOR_BGR2GRAY);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//滤波处理</span></span><br><span class="line">	medianBlur(gray, gray, <span class="number">5</span>);</span><br><span class="line">	imshow(<span class="string">"gray"</span>, gray);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//Hough圆检测</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;Vec3f&gt; circles;</span><br><span class="line">	HoughCircles(gray, circles, HOUGH_GRADIENT, <span class="number">1</span>,</span><br><span class="line">		gray.rows / <span class="number">8</span>,  <span class="comment">// change this value to detect circles with different distances to each other</span></span><br><span class="line">		<span class="number">60</span>, <span class="number">25</span>, <span class="number">30</span>, <span class="number">300</span> <span class="comment">// change the last two parameters</span></span><br><span class="line">   <span class="comment">// (min_radius &amp; max_radius) to detect larger circles</span></span><br><span class="line">	);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//draw the circle be detected</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; circles.size(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		Vec3i c = circles[i];</span><br><span class="line">		Point center = Point(c[<span class="number">0</span>], c[<span class="number">1</span>]);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; center &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="comment">// circle center</span></span><br><span class="line">		circle(src, center, <span class="number">1</span>, Scalar(<span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>), <span class="number">3</span>, LINE_AA);</span><br><span class="line">		<span class="comment">// circle outline</span></span><br><span class="line">		<span class="keyword">int</span> radius = c[<span class="number">2</span>];</span><br><span class="line">		circle(src, center, radius, Scalar(<span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>), <span class="number">3</span>, LINE_AA);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//show the result</span></span><br><span class="line">	imshow(<span class="string">"detected circles"</span>, src);</span><br><span class="line">	<span class="comment">//------------------------------------------------</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	waitKey();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2、h-subplot-mrows-ncols-thisplot-函数"><a href="#2、h-subplot-mrows-ncols-thisplot-函数" class="headerlink" title="2、h=subplot(mrows,ncols,thisplot)函数"></a>2、h=subplot(mrows,ncols,thisplot)函数</h4><p>​    划分整个作图区域为mrows*ncols块（逐行对块访问）并激活第thisplot块，其后的作图语句将图形画在该块上.</p>
+<h3 id="3、zoom-on"><a href="#3、zoom-on" class="headerlink" title="3、zoom on"></a>3、zoom on</h3><p>为当前图形打开缩放模式,单击鼠标左键，则在当前图形窗口中，以鼠标点中的点为中心的图形放大2倍；单击鼠标右键，则缩小2倍.zoom off 关闭缩放模式.</p>
+<h4 id="4、View-改变视角"><a href="#4、View-改变视角" class="headerlink" title="4、View()改变视角"></a>4、View()改变视角</h4><p>命令view(a,b)改变视角到(a,b),a是方位角,b为仰角.缺省视角为（-37.5，30）。</p>
+<p>view用空间向量表示的，三个量只关心它们的比例，与数值的大小无关，x轴view（[1，0，0]），y轴view（[0，1，0]），z 轴view（[0，0 ，1]）。</p>
+<h4 id="5、Moviein-getframe-movie-动画"><a href="#5、Moviein-getframe-movie-动画" class="headerlink" title="5、Moviein(),getframe,movie() 动画"></a>5、Moviein(),getframe,movie() 动画</h4><p>函数Moviein()产生一个帧矩阵来存放动画中的帧；函数getframe对当前的图像进行快照；函数movie()按顺序回放各帧.</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[x,y,z]=peaks(<span class="number">30</span>);</span><br><span class="line">surf(x,y,z)</span><br><span class="line">axis([<span class="number">-3</span> <span class="number">3</span> <span class="number">-3</span> <span class="number">3</span> <span class="number">-10</span> <span class="number">10</span>])</span><br><span class="line">m=moviein(<span class="number">15</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="number">15</span></span><br><span class="line">view(<span class="number">-37.5</span>+<span class="number">24</span>*(<span class="built_in">i</span><span class="number">-1</span>),<span class="number">30</span>)</span><br><span class="line">m(:,<span class="built_in">i</span>)=getframe;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">movie(m)</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://chenandongtime.github.io/img/1.png" alt></p>
-<p><img src="https://chenandongtime.github.io/img/2.png" alt></p>
+<h4 id="6、极坐标图-polar-theta-rho-s"><a href="#6、极坐标图-polar-theta-rho-s" class="headerlink" title="6、极坐标图 polar (theta,rho,s)"></a>6、极坐标图 polar (theta,rho,s)</h4><p>用角度theta（弧度表示）和极半径rho作极坐标图，用s指定线型.</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">theta=<span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>),</span><br><span class="line">rho=<span class="built_in">sin</span>(<span class="number">2</span>*theta).*<span class="built_in">cos</span>(<span class="number">2</span>*theta);</span><br><span class="line">polar(theta,rho,’g’)</span><br><span class="line">title(‘Polar <span class="built_in">plot</span> of <span class="built_in">sin</span>(<span class="number">2</span>*theta).*<span class="built_in">cos</span>(<span class="number">2</span>*theta)’);</span><br></pre></td></tr></table></figure>
+
+<h3 id="7、散点图scatter（X-Y-S-C）"><a href="#7、散点图scatter（X-Y-S-C）" class="headerlink" title="7、散点图scatter（X,Y,S,C）"></a>7、散点图scatter（X,Y,S,C）</h3><p>在向量X和Y的指定位置显示彩色圈．X和Y必须大小相同。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">load seamount</span><br><span class="line"><span class="built_in">scatter</span>(x,y,<span class="number">5</span>,z)</span><br></pre></td></tr></table></figure>
+
+<h4 id="8、平面等值线图contour-x-y-z-n"><a href="#8、平面等值线图contour-x-y-z-n" class="headerlink" title="8、平面等值线图contour(x,y,z,n)"></a>8、平面等值线图contour(x,y,z,n)</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">［X,Y］=meshgeid(<span class="number">-2</span>:<span class="number">.2</span>:<span class="number">2</span>,<span class="number">-2</span>:<span class="number">.2</span>:<span class="number">3</span>);</span><br><span class="line">Z=X.*<span class="built_in">exp</span>(-X.^<span class="number">2</span>-Y.^<span class="number">2</span>);</span><br><span class="line">[C,h]=contour(X,Y,Z);</span><br><span class="line">clabel(C,h)</span><br><span class="line">colormap cool</span><br></pre></td></tr></table></figure>
+
+<h4 id="9、空间等值线图contour-3-x-y-z-n"><a href="#9、空间等值线图contour-3-x-y-z-n" class="headerlink" title="9、空间等值线图contour 3(x,y,z,n)"></a>9、空间等值线图contour 3(x,y,z,n)</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[x,y,z]=peaks;</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">contour3(x,y,z,<span class="number">16</span>,<span class="string">'s'</span>)</span><br><span class="line">grid, xlabel(<span class="string">'x-axis'</span>),ylabel(<span class="string">'y-axis'</span>)</span><br><span class="line">zlabel(<span class="string">'z-axis'</span>)</span><br><span class="line">title(<span class="string">'contour3 of peaks'</span>);</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">contour(x,y,z,<span class="number">16</span>,<span class="string">'s'</span>)</span><br><span class="line">grid, xlabel(<span class="string">'x-axis'</span>), ylabel(<span class="string">'y-axis'</span>)</span><br><span class="line">title(<span class="string">'contour of peaks'</span>);</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -229,7 +237,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -296,7 +304,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/09/OpenCV学习笔记十：hough变换/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/13/Matlab使用技巧/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -310,18 +318,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/08/09/OpenCV4-1-1与VS2017环境配置/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          OpenCV4.1.1与VS2017环境配置
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/08/OpenCV学习笔记九-Canny边缘检测/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">OpenCV学习笔记九-Canny边缘检测</div>
+    <a href="/2019/08/12/OpenCV学习-读取kinect数据为Mat格式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OpenCV学习-读取kinect数据为Mat格式 </div>
       <i class="icon-circle-right"></i>
     </a>
   
