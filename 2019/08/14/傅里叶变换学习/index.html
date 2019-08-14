@@ -16,10 +16,13 @@
 <meta property="og:site_name" content="安东的时光机器">
 <meta property="og:description" content="尝试展示傅里叶级数详细的推导过程，傅里叶变换的推导，解释频率域与时空域的关系以及高频滤波低频滤波的原理。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-14T12:34:50.133Z">
+<meta property="og:image" content="https://chenandongtime.github.io/img/1565785135709.png">
+<meta property="og:image" content="https://chenandongtime.github.io/img/1565785186318.png">
+<meta property="og:updated_time" content="2019-08-14T12:41:57.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="傅里叶变换学习">
 <meta name="twitter:description" content="尝试展示傅里叶级数详细的推导过程，傅里叶变换的推导，解释频率域与时空域的关系以及高频滤波低频滤波的原理。">
+<meta name="twitter:image" content="https://chenandongtime.github.io/img/1565785135709.png">
   
     <link rel="alternative" href="/atom.xml" title="安东的时光机器" type="application/atom+xml">
   
@@ -183,8 +186,8 @@
 <p>由上式可以看出其实函数的自己的内积，可以写成如下的积分形式：<br>$$<br>\vec{f(x)} \cdot \vec{f(x)}=|f(x)|^2 = \int{f(x)f(x)}dx<br>$$<br>现在回想一下求基函数的系数怎么求的？<br>$$<br>假设基函数 \vec{a}与其它正交基函数组成了向量\vec{V}。<br>则其系数a_1= \frac {\vec{v} \cdot{\vec{a}}}{\vec{a} \cdot \vec{a}}<br>$$<br>尝试求一下系数<br>$$<br>a_n = \frac{\int_{x=0}^{x=T}{f(x) \cdot {cos(\frac{2 \pi n}{T}x)dx}}}{ \int_{x=0}^{x=T}cos^2(\frac{2 \pi n}{T}x)dx}=\frac{2}{T}{\int_{x=0}^{x=T}{f(x) \cdot {cos(\frac{2 \pi n}{T}x)dx}}}<br>$$<br>同理求一下<br>$$<br>c_n = \frac{1}{T}\int_{x=0}^{x=T}{f(x) \cdot {e^{-i(\frac{2 \pi n}{T}x)}dx}}<br>$$<br><strong>这就是傅里叶级数，在这里并没有把过程一步步推导出来主要卡在-i的位置，我不知道-i怎么出来的。另外这个合成的基函数直接求内积是0，所以其基函数内积应该是上面an和 bn的基函数内积之和才对。</strong></p>
 <h3 id="傅里叶变换"><a href="#傅里叶变换" class="headerlink" title="傅里叶变换"></a>傅里叶变换</h3><p>暂时先不写吧，主要是是傅里叶级数理解了，傅里叶变换也就好理解了，例外这一块还需要补充知识。<br>$$<br>F(u)= \int_{-\infty}^{\infty}f(x)e^{-i2 \pi ux}dx<br>$$</p>
 <p>$$<br>f(t) = \int_{- \infty}^{\infty}{F(u)e^{i2 \pi ux}}du<br>$$</p>
-<h3 id="频率和滤波"><a href="#频率和滤波" class="headerlink" title="频率和滤波"></a>频率和滤波</h3><h5 id="频域和时域的关系："><a href="#频域和时域的关系：" class="headerlink" title="频域和时域的关系："></a>频域和时域的关系：</h5><p>![1565785135709](E:\OneDrive - hust.edu.cn\研究生学习\00_学习记录\hexo博客\blog博客\public\img\1565785135709.png)</p>
-<p>![1565785186318](E:\OneDrive - hust.edu.cn\研究生学习\00_学习记录\hexo博客\blog博客\public\img\1565785186318.png)</p>
+<h3 id="频率和滤波"><a href="#频率和滤波" class="headerlink" title="频率和滤波"></a>频率和滤波</h3><h5 id="频域和时域的关系："><a href="#频域和时域的关系：" class="headerlink" title="频域和时域的关系："></a>频域和时域的关系：</h5><p><img src="https://chenandongtime.github.io/img/1565785135709.png" alt="1565785135709"></p>
+<p><img src="https://chenandongtime.github.io/img/1565785186318.png" alt="1565785186318"></p>
 <p>所谓的时域就是能够看出随时间的改变函数只的改变，而频域只能看到随频率的改变，对应频率的幅值的变化。对于一个函数来说，其变化大的地方对应的高频函数的幅值较大，其变换小的地方高频函数的幅值小。那么所谓的高通低通滤波，就是在乘一个频率函数，低通滤波时是高频函数值为0既可以，低频为1。高通滤波时，低频函数为0，高频函数为1。</p>
 
       
