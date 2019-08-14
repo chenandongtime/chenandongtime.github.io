@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>OpenCV学习笔记七:创建滑动条 | 安东的时光机器</title>
+  <title>Tag: 高等数学 | 安东的时光机器</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="摘要：主要记录滑动条函数使用方法">
-<meta name="keywords" content="OpenCV">
-<meta property="og:type" content="article">
-<meta property="og:title" content="OpenCV学习笔记七:创建滑动条">
-<meta property="og:url" content="http://yoursite.com/2019/08/08/OpenCV学习笔记七-创建滑动条/index.html">
+  <meta name="description" content="坚持就是胜利">
+<meta name="keywords" content="啦啦啦">
+<meta property="og:type" content="website">
+<meta property="og:title" content="安东的时光机器">
+<meta property="og:url" content="http://yoursite.com/tags/高等数学/index.html">
 <meta property="og:site_name" content="安东的时光机器">
-<meta property="og:description" content="摘要：主要记录滑动条函数使用方法">
+<meta property="og:description" content="坚持就是胜利">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-08T04:58:41.831Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenCV学习笔记七:创建滑动条">
-<meta name="twitter:description" content="摘要：主要记录滑动条函数使用方法">
+<meta name="twitter:title" content="安东的时光机器">
+<meta name="twitter:description" content="坚持就是胜利">
   
     <link rel="alternative" href="/atom.xml" title="安东的时光机器" type="application/atom+xml">
   
@@ -151,215 +150,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-OpenCV学习笔记七-创建滑动条" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      OpenCV学习笔记七:创建滑动条
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/08/14/傅里叶变换学习/" class="archive-article-date">
+  	<time datetime="2019-08-14T09:09:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/08/14/傅里叶变换学习/">傅里叶变换学习</a>
     </h1>
   
 
-        
-        <a href="/2019/08/08/OpenCV学习笔记七-创建滑动条/" class="archive-article-date">
-  	<time datetime="2019-08-08T04:56:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="摘要：主要记录滑动条函数使用方法"><a href="#摘要：主要记录滑动条函数使用方法" class="headerlink" title="摘要：主要记录滑动条函数使用方法"></a>摘要：主要记录滑动条函数使用方法</h4><a id="more"></a>
-
-<h5 id="创建滑动条函数："><a href="#创建滑动条函数：" class="headerlink" title="创建滑动条函数："></a>创建滑动条函数：</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C++: </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">createTrackbar</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; trackbarname, <span class="keyword">const</span> <span class="built_in">string</span>&amp; winname, <span class="keyword">int</span>* value, <span class="keyword">int</span> count, TrackbarCallback onChange=<span class="number">0</span>, <span class="keyword">void</span>* userdata=<span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
-
-<p>参数：<br>trackbarname=》所创建的跟踪条的名字</p>
-<p>winname=》跟踪条所依附的窗口的名字</p>
-<p>value=》可选的指向整型变量的指针，整型变量的值对应于滑动条的位置。初始创建时，滑动条的值就是这个整型变量的值。</p>
-<p>count=》滑动条最大的值。最小值总是为0。</p>
-<p>onChange=》指向回调函数的指针，每次滚动条改变位置时，这个函数就会被调用。这个函数的原型应该为：void Foo(int, void<em>)；*</em>其中第一个参数是跟踪条的位置，第二个参数是用户数据（见下一个参数）。如果回调为空，表示没有回调函数被调用，仅仅value会有变化。**</p>
-<p>userdata=》通过回调函数传递的用户数据。它可以控制跟踪条事件而不需要使用全局变量。<br>这个createTrackbar函数创建一个具有特定名称和范围的轨迹条（滚动条，或者说是滑块范围控制工具），指定一个和轨迹条位置同步的变量。而且要指定回调函数，在轨迹条位置改变的时候来调用这个回调函数。创建的轨迹条显示在指定的winname所代表的窗口上。</p>
-<p><strong>注：如果回调函数中使用的是全局变量 则userdata可以默认为0（空）</strong></p>
-<h5 id="回调函数解释："><a href="#回调函数解释：" class="headerlink" title="回调函数解释："></a>回调函数解释：</h5><p>知乎神答：</p>
-<p><a href="https://www.zhihu.com/question/19801131" target="_blank" rel="noopener">https://www.zhihu.com/question/19801131</a></p>
-<p>百度百科：</p>
-<p><a href="https://baike.baidu.com/item/回调函数" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0</a></p>
-<p>我的理解就是把函数当作参数传到另一个函数中，当另一个函数运行时，遇到特定条件可以触发传进来的调用函数。回调函数是丫鬟，主调函数是主人。</p>
-<p>示例中展示了回调函数中的userdata使用的一种情况：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv/cv.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/core/core.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/highgui/highgui.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义了窗体名</span></span><br><span class="line"><span class="built_in">string</span> winName = <span class="string">"二值化"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//TrackBar发生改变的回调函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">onChangeTrackBar</span><span class="params">(<span class="keyword">int</span> pos, <span class="keyword">void</span>* userdata)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//主函数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//trackbar名</span></span><br><span class="line">	<span class="built_in">string</span> trackBarName = <span class="string">"pos"</span>;</span><br><span class="line">	<span class="comment">//图像文件名</span></span><br><span class="line">	<span class="built_in">string</span> imgName = <span class="string">"1.jpg"</span>;</span><br><span class="line">	<span class="comment">//trackbar的值</span></span><br><span class="line">	<span class="keyword">int</span> posTrackBar = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//trackbar的最大值</span></span><br><span class="line">	<span class="keyword">int</span> maxValue = <span class="number">255</span>;</span><br><span class="line"></span><br><span class="line">	Mat img;</span><br><span class="line">	<span class="comment">//读入图像，以灰度图形式读入</span></span><br><span class="line">	img = imread(imgName, <span class="number">0</span>);</span><br><span class="line">	<span class="comment">//新建窗口</span></span><br><span class="line">	namedWindow(winName);</span><br><span class="line">	imshow(winName, img);</span><br><span class="line">	<span class="comment">//创建trackbar，我们把img作为数据传进回调函数中</span></span><br><span class="line">	createTrackbar(trackBarName, winName, &amp;posTrackBar, maxValue, onChangeTrackBar, &amp;img);</span><br><span class="line"></span><br><span class="line">	waitKey();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回调函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">onChangeTrackBar</span><span class="params">(<span class="keyword">int</span> pos, <span class="keyword">void</span>* usrdata)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 强制类型转换</span></span><br><span class="line">	Mat src = *(Mat*)(usrdata);</span><br><span class="line"></span><br><span class="line">	Mat dst;</span><br><span class="line">	<span class="comment">// 二值化</span></span><br><span class="line">	threshold(src, dst, pos, <span class="number">255</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	imshow(winName, dst);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://andong-blog.cn/images/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://andong-blog.cn/images/weiChat.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">高等数学</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        			<a href="/categories/数学//" class="article-tag-list-link color3">数学</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/08/OpenCV学习笔记七-创建滑动条/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/08/08/OPenCV学习笔记八-图像的滤波/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          OPenCV学习笔记八:图像的滤波
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/08/08/OpenCV学习笔记六-提高对比度/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">OpenCV学习笔记六-提高对比度</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -382,9 +237,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
