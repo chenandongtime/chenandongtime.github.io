@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>安东的时光机器</title>
+  <title>OpenCV学习笔记十二-傅里叶变换及滤波 | 安东的时光机器</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="坚持就是胜利">
-<meta name="keywords" content="啦啦啦">
-<meta property="og:type" content="website">
-<meta property="og:title" content="安东的时光机器">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="傅里叶正变换 傅里叶逆变换 高斯高通滤波 高斯低通滤波">
+<meta name="keywords" content="OpenCV">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenCV学习笔记十二-傅里叶变换及滤波">
+<meta property="og:url" content="http://yoursite.com/2019/08/20/OpenCV学习笔记-傅里叶变换/index.html">
 <meta property="og:site_name" content="安东的时光机器">
-<meta property="og:description" content="坚持就是胜利">
+<meta property="og:description" content="傅里叶正变换 傅里叶逆变换 高斯高通滤波 高斯低通滤波">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-20T07:30:02.070Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安东的时光机器">
-<meta name="twitter:description" content="坚持就是胜利">
+<meta name="twitter:title" content="OpenCV学习笔记十二-傅里叶变换及滤波">
+<meta name="twitter:description" content="傅里叶正变换 傅里叶逆变换 高斯高通滤波 高斯低通滤波">
   
     <link rel="alternative" href="/atom.xml" title="安东的时光机器" type="application/atom+xml">
   
@@ -150,16 +151,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-OpenCV学习笔记-傅里叶变换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-OpenCV学习笔记-傅里叶变换" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/20/OpenCV学习笔记-傅里叶变换/">OpenCV学习笔记十二-傅里叶变换及滤波</a>
+    <h1 class="article-title" itemprop="name">
+      OpenCV学习笔记十二-傅里叶变换及滤波
     </h1>
   
 
@@ -176,11 +175,44 @@
 <p>傅里叶逆变换</p>
 <p>高斯高通滤波</p>
 <p>高斯低通滤波</p>
-        
-          <a class="article-more-a" href="/2019/08/20/OpenCV学习笔记-傅里叶变换/#more">more >></a>
-        
+<a id="more"></a>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/opencv.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> IMG_PATH <span class="meta-string">"1.jpg"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Mat inputImg = imread(IMG_PATH, IMREAD_GRAYSCALE);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (inputImg.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"图片没读到，傻逼！"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//***********************DFT变换*************************************//</span></span><br><span class="line">	<span class="comment">//得到DFT的最佳尺寸（2的指数），以加速计算</span></span><br><span class="line">	Mat paddedImg;</span><br><span class="line">	<span class="keyword">int</span> m = getOptimalDFTSize(inputImg.rows);</span><br><span class="line">	<span class="keyword">int</span> n = getOptimalDFTSize(inputImg.cols);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"图片原始尺寸为："</span> &lt;&lt; inputImg.cols &lt;&lt; <span class="string">"*"</span> &lt;&lt; inputImg.rows &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"DFT最佳尺寸为："</span> &lt;&lt; n &lt;&lt; <span class="string">"*"</span> &lt;&lt; m &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//填充图像的下端和右端</span></span><br><span class="line">	copyMakeBorder(inputImg, paddedImg, <span class="number">0</span>, m - inputImg.rows,</span><br><span class="line">		<span class="number">0</span>, n - inputImg.cols, BORDER_CONSTANT, Scalar::all(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">//将填充的图像组成一个复数的二维数组（两个通道的Mat），用于DFT</span></span><br><span class="line">	Mat matArray[] = &#123; Mat_&lt;<span class="keyword">float</span>&gt;(paddedImg), Mat::zeros(paddedImg.size(), CV_32F) &#125;;</span><br><span class="line">	Mat complexInput, complexOutput;</span><br><span class="line">	merge(matArray, <span class="number">2</span>, complexInput);</span><br><span class="line"></span><br><span class="line">	dft(complexInput, complexOutput);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//计算幅度谱（傅里叶谱）</span></span><br><span class="line">	split(complexOutput, matArray);</span><br><span class="line">	Mat magImg;</span><br><span class="line">	magnitude(matArray[<span class="number">0</span>], matArray[<span class="number">1</span>], magImg);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//转换到对数坐标</span></span><br><span class="line">	magImg += Scalar::all(<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">log</span>(magImg, magImg);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//将频谱图像裁剪成偶数并将低频部分放到图像中心</span></span><br><span class="line">	<span class="comment">//int width = (magImg.cols / 2) * 2;</span></span><br><span class="line">	<span class="comment">//int height = (magImg.cols / 2) * 2;</span></span><br><span class="line">	<span class="comment">//magImg = magImg(Rect(0, 0, width, height));</span></span><br><span class="line">	magImg = magImg(Rect(<span class="number">0</span>, <span class="number">0</span>, magImg.cols &amp; <span class="number">-2</span>, magImg.rows &amp; <span class="number">-2</span>));</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> colToCut = magImg.cols / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> rowToCut = magImg.rows / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//获取图像，分别为左上右上左下右下</span></span><br><span class="line">	<span class="comment">//注意这种方式得到的是magImg的ROI的引用</span></span><br><span class="line">	<span class="comment">//对下面四幅图像进行修改就是直接对magImg进行了修改</span></span><br><span class="line">	<span class="function">Mat <span class="title">topLeftImg</span><span class="params">(magImg, Rect(<span class="number">0</span>, <span class="number">0</span>, colToCut, rowToCut))</span></span>;</span><br><span class="line">	<span class="function">Mat <span class="title">topRightImg</span><span class="params">(magImg, Rect(colToCut, <span class="number">0</span>, colToCut, rowToCut))</span></span>;</span><br><span class="line">	<span class="function">Mat <span class="title">bottomLeftImg</span><span class="params">(magImg, Rect(<span class="number">0</span>, rowToCut, colToCut, rowToCut))</span></span>;</span><br><span class="line">	<span class="function">Mat <span class="title">bottomRightImg</span><span class="params">(magImg, Rect(colToCut, rowToCut, colToCut, rowToCut))</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//第二象限和第四象限进行交换</span></span><br><span class="line">	Mat tmpImg;</span><br><span class="line">	topLeftImg.copyTo(tmpImg);</span><br><span class="line">	bottomRightImg.copyTo(topLeftImg);</span><br><span class="line">	tmpImg.copyTo(bottomRightImg);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//第一象限和第三象限进行交换</span></span><br><span class="line">	bottomLeftImg.copyTo(tmpImg);</span><br><span class="line">	topRightImg.copyTo(bottomLeftImg);</span><br><span class="line">	tmpImg.copyTo(topRightImg);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//归一化图像</span></span><br><span class="line">	normalize(magImg, magImg, <span class="number">0</span>, <span class="number">1</span>, NORM_MINMAX);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//***************************傅里叶反变换*************************//</span></span><br><span class="line">	Mat complexIDFT, IDFTImg;</span><br><span class="line">	idft(complexOutput, complexIDFT);</span><br><span class="line">	split(complexIDFT, matArray);</span><br><span class="line">	magnitude(matArray[<span class="number">0</span>], matArray[<span class="number">1</span>], IDFTImg);</span><br><span class="line">	normalize(IDFTImg, IDFTImg, <span class="number">0</span>, <span class="number">1</span>, NORM_MINMAX);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	imshow(<span class="string">"输入图像"</span>, inputImg);</span><br><span class="line">	imshow(<span class="string">"频谱图像"</span>, magImg);</span><br><span class="line">	imshow(<span class="string">"反变换图像"</span>, IDFTImg);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/***********************频率域滤波部分*************************/</span></span><br><span class="line">	<span class="comment">//高斯低通滤波函数（中间高两边低）</span></span><br><span class="line">	<span class="function">Mat <span class="title">gaussianBlur</span><span class="params">(paddedImg.size(), CV_32FC2)</span></span>;</span><br><span class="line">	<span class="comment">//高斯高通滤波函数（中间低两边高）</span></span><br><span class="line">	<span class="function">Mat <span class="title">gaussianSharpen</span><span class="params">(paddedImg.size(), CV_32FC2)</span></span>;</span><br><span class="line">	<span class="keyword">double</span> D0 = <span class="number">2</span> * <span class="number">10</span> * <span class="number">10</span> * <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; paddedImg.rows; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">float</span>*p = gaussianBlur.ptr&lt;<span class="keyword">float</span>&gt;(i);</span><br><span class="line">		<span class="keyword">float</span>*q = gaussianSharpen.ptr&lt;<span class="keyword">float</span>&gt;(i);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; paddedImg.cols; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">double</span> d = <span class="built_in">pow</span>(i - paddedImg.rows / <span class="number">2</span>, <span class="number">2</span>) + <span class="built_in">pow</span>(j - paddedImg.cols / <span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">			p[<span class="number">2</span> * j] = expf(-d / D0);</span><br><span class="line">			p[<span class="number">2</span> * j + <span class="number">1</span>] = expf(-d / D0);</span><br><span class="line"></span><br><span class="line">			q[<span class="number">2</span> * j] = <span class="number">1</span> - expf(-d / D0);</span><br><span class="line">			q[<span class="number">2</span> * j + <span class="number">1</span>] = <span class="number">1</span> - expf(-d / D0);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//将实部和虚部按照频谱图的方式换位</span></span><br><span class="line">	<span class="comment">//低频在图像中心，用于滤波</span></span><br><span class="line">	split(complexOutput, matArray);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//matArray[0]表示DFT的实部</span></span><br><span class="line">	<span class="function">Mat <span class="title">q1</span><span class="params">(matArray[<span class="number">0</span>], Rect(<span class="number">0</span>, <span class="number">0</span>, colToCut, rowToCut))</span></span>;</span><br><span class="line">	<span class="function">Mat <span class="title">q2</span><span class="params">(matArray[<span class="number">0</span>], Rect(colToCut, <span class="number">0</span>, colToCut, rowToCut))</span></span>;</span><br><span class="line">	<span class="function">Mat <span class="title">q3</span><span class="params">(matArray[<span class="number">0</span>], Rect(<span class="number">0</span>, rowToCut, colToCut, rowToCut))</span></span>;</span><br><span class="line">	<span class="function">Mat <span class="title">q4</span><span class="params">(matArray[<span class="number">0</span>], Rect(colToCut, rowToCut, colToCut, rowToCut))</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//第二象限和第四象限进行交换</span></span><br><span class="line">	q1.copyTo(tmpImg);</span><br><span class="line">	q4.copyTo(q1);</span><br><span class="line">	tmpImg.copyTo(q4);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//第一象限和第三象限进行交换</span></span><br><span class="line">	q2.copyTo(tmpImg);</span><br><span class="line">	q3.copyTo(q2);</span><br><span class="line">	tmpImg.copyTo(q3);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//matArray[1]表示DFT的虚部</span></span><br><span class="line">	<span class="function">Mat <span class="title">qq1</span><span class="params">(matArray[<span class="number">1</span>], Rect(<span class="number">0</span>, <span class="number">0</span>, colToCut, rowToCut))</span></span>;</span><br><span class="line">	<span class="function">Mat <span class="title">qq2</span><span class="params">(matArray[<span class="number">1</span>], Rect(colToCut, <span class="number">0</span>, colToCut, rowToCut))</span></span>;</span><br><span class="line">	<span class="function">Mat <span class="title">qq3</span><span class="params">(matArray[<span class="number">1</span>], Rect(<span class="number">0</span>, rowToCut, colToCut, rowToCut))</span></span>;</span><br><span class="line">	<span class="function">Mat <span class="title">qq4</span><span class="params">(matArray[<span class="number">1</span>], Rect(colToCut, rowToCut, colToCut, rowToCut))</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//第二象限和第四象限进行交换</span></span><br><span class="line">	qq1.copyTo(tmpImg);</span><br><span class="line">	qq4.copyTo(qq1);</span><br><span class="line">	tmpImg.copyTo(qq4);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//第一象限和第三象限进行交换</span></span><br><span class="line">	qq2.copyTo(tmpImg);</span><br><span class="line">	qq3.copyTo(qq2);</span><br><span class="line">	tmpImg.copyTo(qq3);</span><br><span class="line"></span><br><span class="line">	merge(matArray, <span class="number">2</span>, complexOutput);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//滤波器和DFT结果相乘（矩阵内积）</span></span><br><span class="line">	multiply(complexOutput, gaussianBlur, gaussianBlur);</span><br><span class="line">	multiply(complexOutput, gaussianSharpen, gaussianSharpen);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//计算频谱</span></span><br><span class="line">	split(gaussianBlur, matArray);</span><br><span class="line">	magnitude(matArray[<span class="number">0</span>], matArray[<span class="number">1</span>], magImg);</span><br><span class="line">	magImg += Scalar::all(<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">log</span>(magImg, magImg);</span><br><span class="line">	normalize(magImg, magImg, <span class="number">1</span>, <span class="number">0</span>, NORM_MINMAX);</span><br><span class="line">	imshow(<span class="string">"高斯低通滤波频谱"</span>, magImg);</span><br><span class="line"></span><br><span class="line">	split(gaussianSharpen, matArray);</span><br><span class="line">	magnitude(matArray[<span class="number">0</span>], matArray[<span class="number">1</span>], magImg);</span><br><span class="line">	magImg += Scalar::all(<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">log</span>(magImg, magImg);</span><br><span class="line">	normalize(magImg, magImg, <span class="number">1</span>, <span class="number">0</span>, NORM_MINMAX);</span><br><span class="line">	imshow(<span class="string">"高斯高通滤波频谱"</span>, magImg);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//IDFT得到滤波结果</span></span><br><span class="line">	Mat gaussianBlurImg;</span><br><span class="line">	idft(gaussianBlur, complexIDFT);</span><br><span class="line">	split(complexIDFT, matArray);</span><br><span class="line">	magnitude(matArray[<span class="number">0</span>], matArray[<span class="number">1</span>], gaussianBlurImg);</span><br><span class="line">	normalize(gaussianBlurImg, gaussianBlurImg, <span class="number">0</span>, <span class="number">1</span>, NORM_MINMAX);</span><br><span class="line"></span><br><span class="line">	Mat gaussianSharpenImg;</span><br><span class="line">	idft(gaussianSharpen, complexIDFT);</span><br><span class="line">	split(complexIDFT, matArray);</span><br><span class="line">	magnitude(matArray[<span class="number">0</span>], matArray[<span class="number">1</span>], gaussianSharpenImg);</span><br><span class="line">	normalize(gaussianSharpenImg, gaussianSharpenImg, <span class="number">0</span>, <span class="number">1</span>, NORM_MINMAX);</span><br><span class="line"></span><br><span class="line">	imshow(<span class="string">"高斯低通滤波"</span>, gaussianBlurImg);</span><br><span class="line">	imshow(<span class="string">"高斯高通滤波"</span>, gaussianSharpenImg);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	waitKey(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://andong-blog.cn/images/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://andong-blog.cn/images/weiChat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -211,16 +243,75 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/20/OpenCV学习笔记-傅里叶变换/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/20/OpenCV学习笔记-傅里叶变换/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/17/数字图像处理-傅里叶滤波/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数字图像处理-傅里叶滤波</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -240,1263 +331,14 @@
 
 
 
-
-  
-    <article id="post-数字图像处理-傅里叶滤波" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/17/数字图像处理-傅里叶滤波/">数字图像处理-傅里叶滤波</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/17/数字图像处理-傅里叶滤波/" class="archive-article-date">
-  	<time datetime="2019-08-17T11:23:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="C:%5CUsers%5CAntime%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1566041810493.png" alt="1566041810493"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DIP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">matlab</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/17/数字图像处理-傅里叶滤波/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hough变换原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/16/hough变换原理/">hough变换原理</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/16/hough变换原理/" class="archive-article-date">
-  	<time datetime="2019-08-16T11:08:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>霍夫变换运用两个坐标空间之间的变换将在一个空间中具有相同形状的曲线或直线映射到另一个坐标空间的一个点上形成峰值，从而把检测任意形状的问题转化为统计峰值问题，本文介绍hough变换检测直线、圆的原理。</p>
-<p>霍夫变换于1962年由Paul Hough 首次提出，后于1972年由Richard Duda和Peter Hart推广使用，经典霍夫变换用来检测图像中的直线，后来霍夫变换扩展到任意形状物体的识别，多为圆和椭圆。</p>
-        
-          <a class="article-more-a" href="/2019/08/16/hough变换原理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DIP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数学//" class="article-tag-list-link color3">数学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/16/hough变换原理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-傅里叶变换学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/14/傅里叶变换学习/">傅里叶变换学习</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/14/傅里叶变换学习/" class="archive-article-date">
-  	<time datetime="2019-08-14T09:09:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>尝试展示傅里叶级数详细的推导过程，傅里叶变换的推导，解释频率域与时空域的关系以及高频滤波低频滤波的原理。</p>
-        
-          <a class="article-more-a" href="/2019/08/14/傅里叶变换学习/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">高等数学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数学//" class="article-tag-list-link color3">数学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/14/傅里叶变换学习/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-error-link2019" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/error-link2019/">error link2019</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/13/error-link2019/" class="archive-article-date">
-  	<time datetime="2019-08-13T10:18:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>public: double __thiscall Eigen::MatrixBase&lt;class Eigen::Matrix&lt;double,-1,–1。。等等，该符号在函数 _main 中被引用。遇到这种问题一般都是由于缺少相应的库文件。</p>
-<p>其中主要看！</p>
-<p><strong>（？</strong>   xxxxx   <strong>@@</strong>  的那个函数名。</p>
-<p>没有定义或声明。</p>
-<p>#include&lt;Eigen/Core&gt;  </p>
-<p>c.determinant();</p>
-<p>解决办法：<strong>是忘了包含文件</strong>：#include &lt;Eigen/Dense&gt;</p>
-        
-          <a class="article-more-a" href="/2019/08/13/error-link2019/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/13/error-link2019/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Matlab-OpenCV-VC-混合编程配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/Matlab-OpenCV-VC-混合编程配置/">Matlab+OpenCV+VC++混合编程配置</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/13/Matlab-OpenCV-VC-混合编程配置/" class="archive-article-date">
-  	<time datetime="2019-08-13T08:32:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>需要在Matlab2017a中使用包含有OpenCV2.4.9的C++文件。网上看了很多教程，但没有完整的清楚的教程，本篇教程，希望能弥补。</p>
-<p>总的来说可以分为三步：</p>
-<p>第一步：Matlab中配置Visual Studio C++的编译器</p>
-<p>第二步：include OpenCV相关的库</p>
-<p>第三步：写出相应的.CPP文件。</p>
-        
-          <a class="article-more-a" href="/2019/08/13/Matlab-OpenCV-VC-混合编程配置/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Matlab</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/13/Matlab-OpenCV-VC-混合编程配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Matlab使用技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/Matlab使用技巧/">Matlab使用技巧</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/13/Matlab使用技巧/" class="archive-article-date">
-  	<time datetime="2019-08-12T16:44:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Matlab使用技巧"><a href="#Matlab使用技巧" class="headerlink" title="Matlab使用技巧"></a>Matlab使用技巧</h2><h3 id="绘图函数"><a href="#绘图函数" class="headerlink" title="绘图函数"></a>绘图函数</h3><h4 id="1、gtext-函数"><a href="#1、gtext-函数" class="headerlink" title="1、gtext()函数"></a>1、gtext()函数</h4><p>​    命令gtext(‘string’)用鼠标放置标注在现有的图上.<br>运行命令gtext(‘string’)时，屏幕上出现当前图形，在<br>图形上出现一个交叉的十字，该十字随鼠标的移动移动，<br>当按下鼠标左键时，该标注string放在当前十交叉的位<br>置.</p>
-        
-          <a class="article-more-a" href="/2019/08/13/Matlab使用技巧/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Matlab</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/13/Matlab使用技巧/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenCV学习-读取kinect数据为Mat格式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/12/OpenCV学习-读取kinect数据为Mat格式/">OpenCV学习-读取kinect数据为Mat格式 </a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/12/OpenCV学习-读取kinect数据为Mat格式/" class="archive-article-date">
-  	<time datetime="2019-08-12T11:05:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>将Kinect2相机的数据转为Mat的单通道灰度图。</p>
-<p>第一步配置环境：</p>
-<p><a href="https://blog.csdn.net/iamubbTing/article/details/78468341" target="_blank" rel="noopener">https://blog.csdn.net/iamubbTing/article/details/78468341</a></p>
-<p>第二步写代码：</p>
-<p><a href="https://blog.csdn.net/ktigerhero3/article/details/49930911" target="_blank" rel="noopener">https://blog.csdn.net/ktigerhero3/article/details/49930911</a></p>
-        
-          <a class="article-more-a" href="/2019/08/12/OpenCV学习-读取kinect数据为Mat格式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kinect</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/12/OpenCV学习-读取kinect数据为Mat格式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenCV学习笔记十一-findcounters函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/11/OpenCV学习笔记十一-findcounters函数/">OpenCV学习笔记十一-findcounters函数</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/11/OpenCV学习笔记十一-findcounters函数/" class="archive-article-date">
-  	<time datetime="2019-08-11T13:28:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>findCounters函数是个重载函数，有两种声明方式：</p>
-<p>普通声明：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">findContours( InputOutputArray image, OutputArrayOfArrays contours,</span><br><span class="line">              <span class="keyword">int</span> mode, <span class="keyword">int</span> method, Point offset=Point());</span><br></pre></td></tr></table></figure>
-
-<p>高级一点的：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">findContours( InputOutputArray image, OutputArrayOfArrays contours,</span><br><span class="line">	      OutputArray hierarchy, <span class="keyword">int</span> mode,</span><br><span class="line">              <span class="keyword">int</span> method, Point offset=Point());</span><br></pre></td></tr></table></figure>
-
-<p>高级一点的声明主要是多了一个 OutputArray hierarchy：</p>
-<p>hierarchy的作用是说明各个轮廓的继承关系。</p>
-        
-          <a class="article-more-a" href="/2019/08/11/OpenCV学习笔记十一-findcounters函数/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/11/OpenCV学习笔记十一-findcounters函数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenCV4-1-1与VS2017环境配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/09/OpenCV4-1-1与VS2017环境配置/">OpenCV4.1.1与VS2017环境配置</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/09/OpenCV4-1-1与VS2017环境配置/" class="archive-article-date">
-  	<time datetime="2019-08-09T14:21:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="关于版本-环境配置"><a href="#关于版本-环境配置" class="headerlink" title="关于版本 环境配置"></a>关于版本 环境配置</h4>
-        
-          <a class="article-more-a" href="/2019/08/09/OpenCV4-1-1与VS2017环境配置/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/09/OpenCV4-1-1与VS2017环境配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenCV学习笔记十：hough变换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/09/OpenCV学习笔记十：hough变换/">OpenCV学习笔记十：hough变换</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/09/OpenCV学习笔记十：hough变换/" class="archive-article-date">
-  	<time datetime="2019-08-09T09:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="关于hough变换函数的bug"><a href="#关于hough变换函数的bug" class="headerlink" title="关于hough变换函数的bug"></a>关于hough变换函数的bug</h4>
-        
-          <a class="article-more-a" href="/2019/08/09/OpenCV学习笔记十：hough变换/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/09/OpenCV学习笔记十：hough变换/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenCV学习笔记九-Canny边缘检测" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/08/OpenCV学习笔记九-Canny边缘检测/">OpenCV学习笔记九-Canny边缘检测</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/08/OpenCV学习笔记九-Canny边缘检测/" class="archive-article-date">
-  	<time datetime="2019-08-08T12:03:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="关于Canny边缘检测算法"><a href="#关于Canny边缘检测算法" class="headerlink" title="关于Canny边缘检测算法"></a>关于Canny边缘检测算法</h3>
-        
-          <a class="article-more-a" href="/2019/08/08/OpenCV学习笔记九-Canny边缘检测/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/08/OpenCV学习笔记九-Canny边缘检测/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OPenCV学习笔记八-图像的滤波" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/08/OPenCV学习笔记八-图像的滤波/">OPenCV学习笔记八:图像的滤波</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/08/OPenCV学习笔记八-图像的滤波/" class="archive-article-date">
-  	<time datetime="2019-08-08T04:57:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="主要记录三种滤波函数的使用"><a href="#主要记录三种滤波函数的使用" class="headerlink" title="主要记录三种滤波函数的使用"></a>主要记录三种滤波函数的使用</h4>
-        
-          <a class="article-more-a" href="/2019/08/08/OPenCV学习笔记八-图像的滤波/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/08/OPenCV学习笔记八-图像的滤波/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenCV学习笔记七-创建滑动条" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/08/OpenCV学习笔记七-创建滑动条/">OpenCV学习笔记七:创建滑动条</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/08/OpenCV学习笔记七-创建滑动条/" class="archive-article-date">
-  	<time datetime="2019-08-08T04:56:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="摘要：主要记录滑动条函数使用方法"><a href="#摘要：主要记录滑动条函数使用方法" class="headerlink" title="摘要：主要记录滑动条函数使用方法"></a>摘要：主要记录滑动条函数使用方法</h4>
-        
-          <a class="article-more-a" href="/2019/08/08/OpenCV学习笔记七-创建滑动条/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/08/OpenCV学习笔记七-创建滑动条/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenCV学习笔记六-提高对比度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/08/OpenCV学习笔记六-提高对比度/">OpenCV学习笔记六-提高对比度</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/08/OpenCV学习笔记六-提高对比度/" class="archive-article-date">
-  	<time datetime="2019-08-08T04:55:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="提高像素对比度"><a href="#提高像素对比度" class="headerlink" title="提高像素对比度"></a>提高像素对比度</h4>
-        
-          <a class="article-more-a" href="/2019/08/08/OpenCV学习笔记六-提高对比度/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/08/OpenCV学习笔记六-提高对比度/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1519,8 +361,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
